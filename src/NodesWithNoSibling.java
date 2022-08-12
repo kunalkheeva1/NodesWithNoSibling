@@ -14,7 +14,19 @@ class Node{
 public class NodesWithNoSibling {
 
 
-    static void rec()
+    static void rec(Node root, ArrayList<Integer>ans){
+        if(root ==null){
+            return;
+        }
+        if(root.left ==null && root.right != null){
+            ans.add(root.right.data);
+        }
+        if(root.left != null && root.right ==null){
+            ans.add(root.left.data);
+        }
+        rec(root.left, ans);
+        rec(root.right,ans);
+    }
 
    static ArrayList<Integer> nodesWithNoSibling(Node node){
        ArrayList<Integer> ans = new ArrayList<>();
